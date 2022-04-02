@@ -97,7 +97,7 @@ const closeWindow = (name: string) => {
   background-repeat: no-repeat;
 }
 #taskbar {
-  @apply text-white text-xs bg-gray-900 px-3 flex items-center justify-between;
+  @apply text-white text-xs bg-gray-900 bg-opacity-75 backdrop-blur-md px-3 flex items-center justify-between rounded-t-lg bottom-0 absolute w-full z-10;
 }
 .fade-enter-active,
 .fade-leave-active {
