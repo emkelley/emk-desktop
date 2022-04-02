@@ -48,19 +48,24 @@ const closeWindow = (name: string) => {
         </article>
       </div>
     </section>
+    <transition name="fade" mode="out-in">
+      <hello-there
+        key="hello"
+        v-if="win.includes('hello')"
+        :initX="640"
+        :initY="200"
+        @close-window="closeWindow('hello')"
+      />
+    </transition>
+    <transition name="fade" mode="out-in">
+      <connect
+        v-if="win.includes('connect')"
+        :initX="50"
+        :initY="50"
+        @close-window="closeWindow('connect')"
+      />
+    </transition>
 
-    <hello-there
-      v-if="win.includes('hello')"
-      :initX="640"
-      :initY="200"
-      @close-window="closeWindow('hello')"
-    />
-    <connect
-      v-if="win.includes('connect')"
-      :initX="50"
-      :initY="50"
-      @close-window="closeWindow('connect')"
-    />
     <footer id="taskbar">
       <nav class="flex flex-col items-center justify-middle text-xl">
         <div
@@ -93,5 +98,12 @@ const closeWindow = (name: string) => {
 }
 #taskbar {
   @apply text-white text-xs bg-gray-900 px-3 flex items-center justify-between;
+}
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 500ms;
+}
+.fade-enter-from, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
 }
 </style>
