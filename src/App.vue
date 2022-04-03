@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import { onMounted, ref } from "vue";
 import { getCurrentTime, getCurrentDate } from "./utils/datetime";
-import HelloThere from "./components/HelloThere.vue";
-import Connect from "./components/Connect.vue";
+import HelloThere from "./components/documents/HelloThere.vue";
+import Connect from "./components/documents/Connect.vue";
+import SamuraiZero from "./components/webpage/SamuraiZero.vue";
 let currentTime = ref(getCurrentTime());
 let currentDate = getCurrentDate();
 
@@ -24,39 +25,44 @@ const closeWindow = (name: string) => {
 
 <template>
   <main class="flex flex-col h-screen overflow-hidden">
-    <section id="desktop" class="grow bg-slate-900 p-4">
-      <div class="flex flex-col w-24 select-none">
-        <article
-          @dblclick="win.push('hello')"
-          class="flex flex-col items-center text-white mb-8 cursor-pointer"
-        >
-          <i class="fa-solid fa-3x fa-file-lines"></i>
-          <p>HelloWorld.txt</p>
+    <section id="desktop" class="grow bg-slate-900 p-4 overflow-hidden">
+      <div class="flex flex-col w-28 select-none text-center">
+        <article @dblclick="win.push('hello')" class="desktop-icon">
+          <i class="fa-solid fa-2x fa-file-lines pb-2"></i>
+          <p class="text-sm">HelloWorld.txt</p>
         </article>
-        <article
-          @dblclick="win.push('connect')"
-          class="flex flex-col items-center text-white mb-8 cursor-pointer"
-        >
-          <i class="fa-solid fa-3x fa-file-lines"></i>
-          <p class="pt-1">Contact.txt</p>
+        <article @dblclick="win.push('connect')" class="desktop-icon">
+          <i class="fa-solid fa-2x fa-file-lines pb-2"></i>
+          <p class="text-sm">FollowMe.txt</p>
+        </article>
+        <article @dblclick="win.push('samurai')" class="desktop-icon">
+          <i class="fak fa-3x fa-flower pb-2"></i>
+          <p class="text-sm">Samurai Zero Website</p>
         </article>
       </div>
     </section>
     <transition name="fade" mode="out-in">
       <hello-there
-        key="hello"
         v-if="win.includes('hello')"
-        :initX="250"
-        :initY="200"
+        offset-left="250px"
+        offset-top="200px"
         @close-window="closeWindow('hello')"
       />
     </transition>
     <transition name="fade" mode="out-in">
       <connect
         v-if="win.includes('connect')"
-        :initX="675"
-        :initY="200"
+        offset-left="675px"
+        offset-top="200px"
         @close-window="closeWindow('connect')"
+      />
+    </transition>
+    <transition name="fade" mode="out-in">
+      <samurai-zero
+        v-if="win.includes('samurai')"
+        offset-left="100px"
+        offset-top="50px"
+        @close-window="closeWindow('samurai')"
       />
     </transition>
 
@@ -89,9 +95,14 @@ const closeWindow = (name: string) => {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  overflow: hidden;
 }
 #taskbar {
   @apply text-white text-xs bg-gray-900 bg-opacity-75 backdrop-blur-md px-3 flex items-center justify-between rounded-t-lg bottom-0 absolute w-full z-10;
+  overflow: hidden;
+}
+.desktop-icon {
+  @apply flex flex-col items-center text-white mb-2 p-2  cursor-pointer hover:bg-indigo-300 hover:bg-opacity-10 border border-transparent hover:border-indigo-200 transition;
 }
 .fade-enter-active,
 .fade-leave-active {
