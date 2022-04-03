@@ -28,22 +28,16 @@ const closeWindow = (name: string) => {
       <div class="flex flex-col w-24 select-none">
         <article
           @dblclick="win.push('hello')"
-          class="flex flex-col items-center text-white mb-8"
+          class="flex flex-col items-center text-white mb-8 cursor-pointer"
         >
-          <img
-            src="https://via.placeholder.com/150"
-            class="aspect-square w-16"
-          />
-          <p class="pt-1">HelloWorld.txt</p>
+          <i class="fa-solid fa-3x fa-file-lines"></i>
+          <p>HelloWorld.txt</p>
         </article>
         <article
           @dblclick="win.push('connect')"
-          class="flex flex-col items-center text-white mb-8"
+          class="flex flex-col items-center text-white mb-8 cursor-pointer"
         >
-          <img
-            src="https://via.placeholder.com/150"
-            class="aspect-square w-16"
-          />
+          <i class="fa-solid fa-3x fa-file-lines"></i>
           <p class="pt-1">Contact.txt</p>
         </article>
       </div>
@@ -52,7 +46,7 @@ const closeWindow = (name: string) => {
       <hello-there
         key="hello"
         v-if="win.includes('hello')"
-        :initX="640"
+        :initX="250"
         :initY="200"
         @close-window="closeWindow('hello')"
       />
@@ -60,8 +54,8 @@ const closeWindow = (name: string) => {
     <transition name="fade" mode="out-in">
       <connect
         v-if="win.includes('connect')"
-        :initX="50"
-        :initY="50"
+        :initX="675"
+        :initY="200"
         @close-window="closeWindow('connect')"
       />
     </transition>
@@ -101,7 +95,7 @@ const closeWindow = (name: string) => {
 }
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity 500ms;
+  transition: opacity 350ms;
 }
 .fade-enter-from, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
   opacity: 0;
