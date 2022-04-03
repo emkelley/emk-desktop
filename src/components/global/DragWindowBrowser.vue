@@ -91,7 +91,13 @@ onMounted(() => {
         </span>
       </div>
     </div>
-    <iframe class="w-full h-full" :src="src" />
+    <iframe
+      class="w-full h-full"
+      :src="src"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen
+    />
     <div
       v-if="src"
       class="p-1 text-xs bg-gray-100 border-t border-gray-200 rounded-b resize"

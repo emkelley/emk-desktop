@@ -1,9 +1,11 @@
 <script setup lang="ts">
 import { onMounted, ref } from "vue";
 import { getCurrentTime, getCurrentDate } from "./utils/datetime";
-import HelloThere from "./components/documents/HelloThere.vue";
+import Welcome from "./components/documents/Welcome.vue";
+import AboutMe from "./components/documents/AboutMe.vue";
 import Connect from "./components/documents/Connect.vue";
 import SamuraiZero from "./components/webpage/SamuraiZero.vue";
+import Rick from "./components/webpage/Rick.vue";
 let currentTime = ref(getCurrentTime());
 let currentDate = getCurrentDate();
 
@@ -13,7 +15,7 @@ onMounted(() => {
   }, 1000);
 });
 
-let win = ref<string[]>([]);
+let win = ref<string[]>(["welcome"]);
 
 const closeWindow = (name: string) => {
   console.log("closing window", name);
@@ -27,26 +29,42 @@ const closeWindow = (name: string) => {
   <main class="flex flex-col h-screen overflow-hidden">
     <section id="desktop" class="grow bg-slate-900 p-4 overflow-hidden">
       <div class="flex flex-col w-28 select-none text-center">
-        <article @dblclick="win.push('hello')" class="desktop-icon">
+        <article @dblclick="win.push('welcome')" class="desktop-icon">
           <i class="fa-solid fa-2x fa-file-lines pb-2"></i>
-          <p class="text-sm">HelloWorld.txt</p>
+          <p class="text-sm">Welcome.txt</p>
+        </article>
+        <article @dblclick="win.push('about')" class="desktop-icon">
+          <i class="fa-solid fa-2x fa-file-lines pb-2"></i>
+          <p class="text-sm">AboutMe.txt</p>
         </article>
         <article @dblclick="win.push('connect')" class="desktop-icon">
           <i class="fa-solid fa-2x fa-file-lines pb-2"></i>
           <p class="text-sm">FollowMe.txt</p>
         </article>
         <article @dblclick="win.push('samurai')" class="desktop-icon">
-          <i class="fak fa-3x fa-flower pb-2"></i>
+          <i class="fak fa-3x fa-flower pb-2 text-red-400"></i>
           <p class="text-sm">Samurai Zero Website</p>
+        </article>
+        <article @dblclick="win.push('rick')" class="desktop-icon">
+          <i class="fab fa-3x fa-youtube pb-2 text-red-400"></i>
+          <p class="text-sm">dQw4w9WgXcQ</p>
         </article>
       </div>
     </section>
     <transition name="fade" mode="out-in">
-      <hello-there
-        v-if="win.includes('hello')"
+      <welcome
+        v-if="win.includes('welcome')"
+        offset-left="200px"
+        offset-top="100px"
+        @close-window="closeWindow('welcome')"
+      />
+    </transition>
+    <transition name="fade" mode="out-in">
+      <about-me
+        v-if="win.includes('about')"
         offset-left="250px"
         offset-top="200px"
-        @close-window="closeWindow('hello')"
+        @close-window="closeWindow('about')"
       />
     </transition>
     <transition name="fade" mode="out-in">
@@ -63,6 +81,14 @@ const closeWindow = (name: string) => {
         offset-left="100px"
         offset-top="50px"
         @close-window="closeWindow('samurai')"
+      />
+    </transition>
+    <transition name="fade" mode="out-in">
+      <rick
+        v-if="win.includes('rick')"
+        offset-left="100px"
+        offset-top="50px"
+        @close-window="closeWindow('rick')"
       />
     </transition>
 
