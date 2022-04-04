@@ -1,13 +1,20 @@
 <script setup lang="ts">
 import { onMounted, ref } from "vue";
 import { getCurrentTime, getCurrentDate } from "./utils/datetime";
+
+import StartMenu from "./components/global/StartMenu.vue";
+import Taskbar from "./components/global/Taskbar.vue";
+
 import Welcome from "./components/documents/Welcome.vue";
 import AboutMe from "./components/documents/AboutMe.vue";
 import Connect from "./components/documents/Connect.vue";
 import SamuraiZero from "./components/webpage/SamuraiZero.vue";
 import Rick from "./components/webpage/Rick.vue";
+
 let currentTime = ref(getCurrentTime());
 let currentDate = getCurrentDate();
+let startVisible = ref(false);
+let win = ref<string[]>(["welcome"]);
 
 onMounted(() => {
   setInterval(() => {
@@ -15,20 +22,15 @@ onMounted(() => {
   }, 1000);
 });
 
-let win = ref<string[]>(["welcome"]);
-
 const closeWindow = (name: string) => {
-  console.log("closing window", name);
-
   win.value = win.value.filter((item) => item !== name);
-  console.log(win.value);
 };
 </script>
 
 <template>
   <main class="flex flex-col h-screen overflow-hidden">
     <section id="desktop" class="grow bg-slate-900 p-4 overflow-hidden">
-      <div class="flex flex-col w-28 select-none text-center">
+      <aside class="flex flex-col w-28 select-none text-center">
         <article @dblclick="win.push('welcome')" class="desktop-icon">
           <i class="fa-solid fa-2x fa-file-lines pb-2"></i>
           <p class="text-sm">Welcome.txt</p>
@@ -49,7 +51,7 @@ const closeWindow = (name: string) => {
           <i class="fab fa-3x fa-youtube pb-2 text-red-400"></i>
           <p class="text-sm">dQw4w9WgXcQ</p>
         </article>
-      </div>
+      </aside>
     </section>
     <transition name="fade" mode="out-in">
       <welcome
@@ -91,27 +93,14 @@ const closeWindow = (name: string) => {
         @close-window="closeWindow('rick')"
       />
     </transition>
-
-    <footer id="taskbar">
-      <nav class="flex flex-col items-center justify-middle text-xl">
-        <div
-          class="flex items-center align-middle hover:bg-indigo-400 text-center p-4 transition cursor-pointer"
-          @click="win.push('start')"
-        >
-          <i class="fak fa-ek"></i>
-        </div>
-      </nav>
-
-      <p>
-        Made with ♥ and ☕ by
-        <a href="https://emk.dev" class="text-indigo-200">Eric Kelley</a> -
-        MMXXII
-      </p>
-      <div id="clock" class="flex flex-col text-center p-1">
-        <p>{{ currentTime }}</p>
-        <p>{{ currentDate }}</p>
-      </div>
-    </footer>
+    <transition name="slide" mode="out-in">
+      <start-menu v-if="startVisible" />
+    </transition>
+    <taskbar
+      @click-start="startVisible = !startVisible"
+      :current-date="currentDate"
+      :current-time="currentTime"
+    />
   </main>
 </template>
 
@@ -124,17 +113,10 @@ const closeWindow = (name: string) => {
   overflow: hidden;
 }
 #taskbar {
-  @apply text-white text-xs bg-gray-900 bg-opacity-75 backdrop-blur-md px-3 flex items-center justify-between rounded-t-lg bottom-0 absolute w-full z-10;
+  @apply text-white text-xs bg-gray-900 bg-opacity-75 backdrop-blur-md px-3 flex items-center justify-between bottom-0 absolute w-full z-10;
   overflow: hidden;
 }
 .desktop-icon {
   @apply flex flex-col items-center text-white mb-2 p-2  cursor-pointer hover:bg-indigo-300 hover:bg-opacity-10 border border-transparent hover:border-indigo-200 transition;
-}
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 350ms;
-}
-.fade-enter-from, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
-  opacity: 0;
 }
 </style>

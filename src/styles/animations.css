@@ -1,11 +1,30 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-a {
-  @apply text-indigo-500 underline;
+/* Window open and close */
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 350ms;
+}
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
 }
 
+/* Start menu slide in */
+.slide-enter-active,
+.slide-leave-active {
+  transition: margin-bottom 150ms ease-in-out;
+}
+
+.slide-enter-from,
+.slide-leave-to {
+  margin-bottom: -200px;
+}
+
+.slide-enter-to,
+.slide-leave {
+  margin-bottom: 0px;
+}
+
+/* Rainbow text */
 .rainbow {
   -webkit-animation: rainbow 8s ease infinite;
   animation: rainbow 8s ease infinite;
@@ -38,8 +57,4 @@ a {
   100% {
     background-position: 1% 80%;
   }
-}
-
-* {
-  overflow: hidden;
 }

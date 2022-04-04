@@ -1,0 +1,13 @@
+@import "./animations.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  overflow: hidden;
+}
+
+a {
+  @apply text-indigo-500 underline;
+}

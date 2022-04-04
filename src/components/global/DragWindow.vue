@@ -112,7 +112,7 @@ let minimized = ref(false);
 
 <style scoped>
 .window-container {
-  @apply bg-white bg-opacity-75 backdrop-blur-md text-black  w-96 rounded shadow-lg absolute z-10;
+  @apply bg-white bg-opacity-75 backdrop-blur-md text-slate-700 w-96 rounded shadow-lg absolute z-10;
 }
 #draggable-header {
   z-index: 10;
