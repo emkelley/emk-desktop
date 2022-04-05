@@ -13,7 +13,7 @@ import Rick from "./components/webpage/Rick.vue";
 
 let currentTime = ref(getCurrentTime());
 let currentDate = getCurrentDate();
-let startVisible = ref(true);
+let startVisible = ref(false);
 let win = ref<string[]>(["welcome"]);
 
 onMounted(() => {
