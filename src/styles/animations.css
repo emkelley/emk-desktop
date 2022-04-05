@@ -23,6 +23,16 @@
 .slide-leave {
   margin-bottom: 0px;
 }
+/* Start menu slide in */
+.slideStart-enter-active,
+.slideStart-leave-active {
+  transition: opacity 350ms;
+}
+
+.slideStart-enter-from,
+.slideStart-leave-to {
+  opacity: 0;
+}
 
 /* Rainbow text */
 .rainbow {
