@@ -61,8 +61,8 @@ const closeWindow = (name: string) => {
     <transition name="fade" mode="out-in">
       <music-player
         v-if="win.includes('music')"
-        offset-left="200px"
-        offset-top="610px"
+        offset-left="1000px"
+        offset-top="100px"
         @close-window="closeWindow('music')"
       />
     </transition>
