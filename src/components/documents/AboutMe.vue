@@ -8,7 +8,7 @@ import DragWindow from "../global/DragWindow.vue";
       <i class="fa-duotone fa-notebook mr-2"></i>Hello There! - Notepad
     </template>
     <template v-slot:main>
-      <p>Hey there, I'm</p>
+      <p class="text-sm font-bold">Hey there, I'm</p>
       <h1 class="text-4xl font-bold rainbow pb-4">Eric Kelley</h1>
       <p class="leading-relaxed tracking-wide">
         From payment processing to network management, I build powerful, elegant

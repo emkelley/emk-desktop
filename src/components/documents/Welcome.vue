@@ -8,7 +8,7 @@ import DragWindow from "../global/DragWindow.vue";
       <i class="fa-duotone fa-notebook mr-2"></i>Welcome - Notepad
     </template>
     <template v-slot:main>
-      <p class="font-bold text-xl">Welcome to my virtual desktop!</p>
+      <p class="font-bold text-xl mb-4">Welcome to my virtual desktop!</p>
       <p class="leading-relaxed tracking-wide">
         After seeing a number of sites, and more particularly
         <a

@@ -1,5 +1,5 @@
 <template>
-  <footer id="taskbar" class="z-20">
+  <footer id="taskbar" class="z-[999]">
     <nav class="flex flex-col items-center justify-middle text-xl">
       <div
         class="flex items-center align-middle hover:bg-indigo-400 text-center p-2 transition cursor-pointer"

@@ -65,7 +65,7 @@ const startItemClick = (item: number) => {
 <template>
   <section
     id="start"
-    class="absolute bottom-[40px] min-w-96 bg-slate-300 bg-opacity-90 z-99 rounded-tr-lg shadow-xl flex flex-row"
+    class="absolute bottom-[40px] min-w-96 bg-slate-300 bg-opacity-95 backdrop-blur-sm z-[998] rounded-tr-lg shadow-xl flex flex-row"
   >
     <section class="flex flex-col p-4">
       <div class="flex-grow"></div>

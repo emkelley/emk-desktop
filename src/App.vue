@@ -8,13 +8,14 @@ import Taskbar from "./components/global/Taskbar.vue";
 import Welcome from "./components/documents/Welcome.vue";
 import AboutMe from "./components/documents/AboutMe.vue";
 import Connect from "./components/documents/Connect.vue";
+import MusicPlayer from "./components/apps/MusicPlayer.vue";
 import SamuraiZero from "./components/webpage/SamuraiZero.vue";
 import Rick from "./components/webpage/Rick.vue";
 
 let currentTime = ref(getCurrentTime());
 let currentDate = getCurrentDate();
 let startVisible = ref(false);
-let win = ref<string[]>(["welcome"]);
+let win = ref<string[]>(["welcome", "connect", "about"]);
 
 onMounted(() => {
   setInterval(() => {
@@ -43,6 +44,10 @@ const closeWindow = (name: string) => {
           <i class="fa-solid fa-2x fa-file-lines pb-2"></i>
           <p class="text-sm">FollowMe.txt</p>
         </article>
+        <article @dblclick="win.push('music')" class="desktop-icon">
+          <i class="fa-solid fa-2x fa-album-collection pb-2"></i>
+          <p class="text-sm">Music Player</p>
+        </article>
         <article @dblclick="win.push('samurai')" class="desktop-icon">
           <i class="fak fa-3x fa-flower pb-2 text-red-400"></i>
           <p class="text-sm">Samurai Zero Website</p>
@@ -54,6 +59,14 @@ const closeWindow = (name: string) => {
       </aside>
     </section>
     <transition name="fade" mode="out-in">
+      <music-player
+        v-if="win.includes('music')"
+        offset-left="200px"
+        offset-top="610px"
+        @close-window="closeWindow('music')"
+      />
+    </transition>
+    <transition name="fade" mode="out-in">
       <welcome
         v-if="win.includes('welcome')"
         offset-left="200px"
@@ -64,16 +77,16 @@ const closeWindow = (name: string) => {
     <transition name="fade" mode="out-in">
       <about-me
         v-if="win.includes('about')"
-        offset-left="250px"
-        offset-top="200px"
+        offset-left="600px"
+        offset-top="100px"
         @close-window="closeWindow('about')"
       />
     </transition>
     <transition name="fade" mode="out-in">
       <connect
         v-if="win.includes('connect')"
-        offset-left="675px"
-        offset-top="200px"
+        offset-left="200px"
+        offset-top="525px"
         @close-window="closeWindow('connect')"
       />
     </transition>
@@ -118,5 +131,7 @@ const closeWindow = (name: string) => {
 }
 .desktop-icon {
   @apply flex flex-col items-center text-white mb-2 p-2  cursor-pointer hover:bg-indigo-300 hover:bg-opacity-10 border border-transparent hover:border-indigo-200 transition;
+  text-shadow: 0px 2px 1px rgba(0, 0, 0, 0.4), 0px 4px 6px rgba(0, 0, 0, 0.1),
+    0px 9px 11px rgba(0, 0, 0, 0.1);
 }
 </style>

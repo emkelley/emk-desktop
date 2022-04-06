@@ -11,17 +11,17 @@
 /* Start menu slide in */
 .slide-enter-active,
 .slide-leave-active {
-  transition: margin-bottom 150ms ease-in-out;
+  transition: margin-left 150ms ease-in-out;
 }
 
 .slide-enter-from,
 .slide-leave-to {
-  margin-bottom: -800px;
+  margin-left: -800px;
 }
 
 .slide-enter-to,
 .slide-leave {
-  margin-bottom: 0px;
+  margin-left: 0px;
 }
 /* Start menu slide in */
 .slideStart-enter-active,

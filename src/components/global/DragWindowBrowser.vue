@@ -112,7 +112,7 @@ onMounted(() => {
 
 <style scoped>
 .window-container {
-  @apply bg-white bg-opacity-75 backdrop-blur-md text-black  w-11/12 h-4/5 min-w-['600px'] rounded shadow-lg absolute z-10;
+  @apply bg-white bg-opacity-75 backdrop-blur-md text-black  w-4/5 max-w-[2000px] aspect-video min-w-['600px'] rounded shadow-lg absolute z-10;
 }
 
 #draggable-header {
