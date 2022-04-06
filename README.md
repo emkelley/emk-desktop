@@ -1,6 +1,6 @@
 # My 'Desktop' themed portfolio site
 
-![image](https://user-images.githubusercontent.com/11874169/161438687-06f99fec-f768-4c00-b353-f971b1f49cc4.png)
+![image](https://user-images.githubusercontent.com/11874169/161881591-3d138694-dc37-4468-9636-ee762a4dda33.png)
 
 
 
