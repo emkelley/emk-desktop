@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import { ref } from "vue";
+const emits = defineEmits(["clickStart"]);
 const menuItems = [
   {
     name: "Recent Projects",
@@ -64,6 +65,7 @@ const startItemClick = (item: number) => {
 
 <template>
   <section
+    v-click-away="emits('clickStart')"
     id="start"
     class="absolute bottom-[40px] min-w-96 bg-slate-300 bg-opacity-95 backdrop-blur-sm z-[998] rounded-tr-lg shadow-xl flex flex-row"
   >

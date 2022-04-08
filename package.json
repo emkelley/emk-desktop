@@ -10,7 +10,8 @@
   "dependencies": {
     "date-fns": "^2.28.0",
     "nanoid": "^3.3.2",
-    "vue": "^3.2.25"
+    "vue": "^3.2.25",
+    "vue3-click-away": "^1.2.4"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^2.3.0",

@@ -19,6 +19,11 @@ const songs = [
     artist: "KennyHoopla",
     url: "https://www.youtube.com/embed/u5VyrdvBjeY?&autoplay=1",
   },
+  {
+    name: "Resolve",
+    artist: "Audien",
+    url: "https://www.youtube.com/embed/TWZf_j1VZ2E?&autoplay=1",
+  },
 ];
 
 export default songs;

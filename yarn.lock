@@ -1463,6 +1463,11 @@ vue-tsc@^0.29.8:
     "@volar/shared" "0.29.8"
     vscode-vue-languageservice "0.29.8"
 
+vue3-click-away@^1.2.4:
+  version "1.2.4"
+  resolved "https://registry.yarnpkg.com/vue3-click-away/-/vue3-click-away-1.2.4.tgz#ee76a241e7cff2a345e14342d558f4801d14cc26"
+  integrity sha512-O9Z2KlvIhJT8OxaFy04eiZE9rc1Mk/bp+70dLok68ko3Kr8AW5dU+j8avSk4GDQu94FllSr4m5ul4BpzlKOw1A==
+
 vue@^3.2.25:
   version "3.2.31"
   resolved "https://registry.yarnpkg.com/vue/-/vue-3.2.31.tgz#e0c49924335e9f188352816788a4cca10f817ce6"

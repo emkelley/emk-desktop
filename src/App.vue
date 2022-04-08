@@ -10,6 +10,7 @@ import AboutMe from "./components/documents/AboutMe.vue";
 import Connect from "./components/documents/Connect.vue";
 import MusicPlayer from "./components/apps/MusicPlayer.vue";
 import SamuraiZero from "./components/webpage/SamuraiZero.vue";
+import SourceCode from "./components/webpage/SourceCode.vue";
 import Rick from "./components/webpage/Rick.vue";
 
 let currentTime = ref(getCurrentTime());
@@ -48,16 +49,20 @@ const closeWindow = (name: string) => {
           <i class="fa-solid fa-2x fa-album-collection pb-2"></i>
           <p class="text-sm">Music Player</p>
         </article>
-        <article @dblclick="win.push('samurai')" class="desktop-icon">
-          <i class="fak fa-3x fa-flower pb-2 text-red-400"></i>
-          <p class="text-sm">Samurai Zero Website</p>
-        </article>
-        <article @dblclick="win.push('rick')" class="desktop-icon">
-          <i class="fab fa-3x fa-youtube pb-2 text-red-400"></i>
-          <p class="text-sm">dQw4w9WgXcQ</p>
+        <article @dblclick="win.push('source')" class="desktop-icon">
+          <i class="fa-solid fa-2x fa-code-merge pb-2"></i>
+          <p class="text-sm">View the Source Code</p>
         </article>
       </aside>
     </section>
+    <transition name="fade" mode="out-in">
+      <source-code
+        v-if="win.includes('source')"
+        offset-left="1000px"
+        offset-top="100px"
+        @close-window="closeWindow('source')"
+      />
+    </transition>
     <transition name="fade" mode="out-in">
       <music-player
         v-if="win.includes('music')"
